@@ -15,12 +15,16 @@ router.get('/', postCtrl.list);
 // POST localhost:3400/posts
 router.post('/', postCtrl.create);
 
-// post 수정
-// PATCH localhost:3400/posts
-router.patch('/:id', postCtrl.replace);
+// post 데이터 통째로 수정
+// PUT localhost:3400/posts/:id
+router.put('/:id', postCtrl.replace);
+
+// post 원하는 필드만 수정
+// PATCH localhost:3400/posts/:id
+router.patch('/:id', postCtrl.update);
 
 // post 삭제
-// DELETE localhost:3400/posts
+// DELETE localhost:3400/posts/:id
 router.delete('/:id', postCtrl.delete);
 
 module.exports = router;
