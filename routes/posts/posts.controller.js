@@ -1,7 +1,15 @@
 const Post = require('../../model/posts');
 
-exports.list = ctx => {
-	ctx.body = 'get list';
+exports.list = async ctx => {
+	let lists;
+
+	try {
+		lists = await Post.find().exec();
+	} catch (e) {
+		return ctx.throw(500, e);
+	}
+
+	ctx.body = lists;
 };
 
 exports.get = ctx => {
