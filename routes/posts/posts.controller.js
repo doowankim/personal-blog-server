@@ -1,3 +1,5 @@
+const Post = require('../../model/posts');
+
 exports.list = ctx => {
 	ctx.body = 'get list';
 };
