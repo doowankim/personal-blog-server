@@ -8,6 +8,7 @@ const router = new Router();
 const postRoute = require('./routes/posts');
 
 const mongoose = require('mongoose');
+const bodyParser = require('koa-bodyparser');
 
 mongoose
 	.connect(process.env.MONGO_URI, {
@@ -16,6 +17,8 @@ mongoose
 	})
 	.then(() => console.log('MongoDB Connected...'))
 	.catch(e => console.errer(e));
+
+app.use(bodyParser());
 
 router.use('/posts', postRoute.routes());
 
