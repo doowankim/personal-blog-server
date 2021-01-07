@@ -62,6 +62,17 @@ exports.replace = ctx => {
 };
 
 // Post 삭제 API
-exports.delete = ctx => {
-	ctx.body = 'deleted post';
+exports.delete = async ctx => {
+	const { id } = ctx.params;
+
+	try {
+		await Post.findByIdAndRemove(id).exec();
+	} catch (e) {
+		if (e.name === 'CastError') {
+			ctx.status = 400;
+			return;
+		}
+	}
+
+	ctx.status = 204; // No Content
 };

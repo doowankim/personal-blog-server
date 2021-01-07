@@ -17,10 +17,10 @@ router.post('/', postCtrl.create);
 
 // post 수정
 // PATCH localhost:3400/posts
-router.patch('/', postCtrl.replace);
+router.patch('/:id', postCtrl.replace);
 
 // post 삭제
 // DELETE localhost:3400/posts
-router.delete('/', postCtrl.delete);
+router.delete('/:id', postCtrl.delete);
 
 module.exports = router;
